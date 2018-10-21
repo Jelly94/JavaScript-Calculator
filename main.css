@@ -1,0 +1,36 @@
+.container {
+    margin-top: 100px;
+    width: 360px;
+}
+
+.result-screen {
+    width: 100%;
+    height: 50px;
+    background: white;
+    border: 1px solid rgba(70, 70, 70, 0.3);
+    text-align: right; 
+    font-size: 24px;
+    padding: 5px;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.col-md-3 {
+    padding: 5px;
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+}
+
+.btn:hover {
+    background: #d9edf7;
+}
+
+#history {
+    text-align: right;
+}

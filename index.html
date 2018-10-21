@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaScript Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <label>JavaScript Calculator</label>
+            </div>
+            <div class="panel-body pb-calc-panel-body">
+                <p id="history"></p>
+                <input id="result-screen" class="result-screen" type="text" disabled>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="ceClicked(this)" value="CE" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="cClicked(this)" value="C" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="delClicked(this)" value="DEL" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="divideClicked(this)" value="/" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="7" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="8" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="9" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="multiplyClicked(this)" value="X" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="4" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="5" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="6" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="subtractClicked(this)" value="-" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="1" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="2" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="3" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="addClicked(this)" value="+" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="plusMinusClicked(this)" value="&plusmn;" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="0" /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="numClicked(this)" value="." /></div>
+                    <div class="col-md-3"><input type="button" class="btn btn-default" onclick="equalsClicked(this)" value="=" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
