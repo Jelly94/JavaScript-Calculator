@@ -8,17 +8,8 @@
     height: 50px;
     background: white;
     border: 1px solid rgba(70, 70, 70, 0.3);
-    text-align: right; 
+    text-align: right;
     font-size: 24px;
-    padding: 5px;
-}
-
-.row {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-.col-xs-3 {
     padding: 5px;
 }
 
@@ -31,6 +22,15 @@
     background: #d9edf7;
 }
 
-#history {
+.col-xs-3 {
+    padding: 5px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#history-screen {
     text-align: right;
 }

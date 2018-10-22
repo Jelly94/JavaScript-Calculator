@@ -1,21 +1,20 @@
-
 var resultScreen = null;
 var memory = null;
 var operation = null;
-var historyP = null;
-var screenContainsMemory = false;
+var historyScreen = null;
+var screenContainsUserInput = true;
 
 window.onload = function () {
     resultScreen = document.getElementById("result-screen");
-    historyP = document.getElementById("history");
+    historyScreen = document.getElementById("history-screen");
     resultScreen.value = "0";
 }
 
 function numClicked(button) {
     button.blur();
-    if (screenContainsMemory) {
-        screenContainsMemory = false;
+    if (!screenContainsUserInput) {
         resultScreen.value = "";
+        screenContainsUserInput = true;
     }
     if (resultScreen.value == "0") resultScreen.value = "";
     if (resultScreen.value.endsWith(".") && button.value == ".") return;
@@ -35,8 +34,7 @@ function subtractClicked(button) {
         updateHistory("-");
         executePendingOperation();
         operation = (a, b) => a - b;
-    }
-    else {
+    } else {
         resultScreen.value = "-";
     }
 }
@@ -67,20 +65,11 @@ function cClicked(button) {
 
 function delClicked(button) {
     button.blur();
-    if (resultScreen.value.length > 1 && resultScreen.value != "0") {
-        resultScreen.value = resultScreen.value.slice(0, resultScreen.value.length - 1);
-    }
-    else if (resultScreen.value.length == 1) {
+    if (resultScreen.value.length > 1) {
+        resultScreen.value = resultScreen.value.slice(0, resultScreen.value.length -1);
+    } else {
         resultScreen.value = "0";
     }
-}
-
-function equalsClicked(button) {
-    button.blur();
-    executePendingOperation();
-    memory = null;
-    historyP.innerHTML = "";
-    operation = null;
 }
 
 function plusMinusClicked(button) {
@@ -88,43 +77,50 @@ function plusMinusClicked(button) {
     resultScreen.value = -1 * parseFloat(resultScreen.value);
 }
 
-function division(a, b) {
-    if (b == 0) {
-        reset();
-        resultScreen.value = "Cannot divide by zero";
-        screenContainsMemory = true;
-        throw "Division by zero";
+function equalsClicked(button) {
+    button.blur();
+    executePendingOperation();
+    memory = null;
+    historyScreen.innerHTML = "";
+    operation = null;
+}
+
+function executePendingOperation() {
+    if (!screenContainsUserInput) return;
+
+    var scr = Number.parseFloat(resultScreen.value);
+    if (operation) {
+        memory = operation(memory, scr);
     }
     else {
-        return a / b;
+        memory = scr;
     }
+    resultScreen.value = memory;
+    screenContainsUserInput = false;
 }
 
 function updateHistory(operator) {
-    if (screenContainsMemory) {
-        historyP.innerHTML = historyP.innerHTML.substring(0, historyP.innerHTML.length - 1) + operator;
+    if (screenContainsUserInput) {
+        historyScreen.innerHTML += resultScreen.value + operator;
     } else {
-        historyP.innerHTML += resultScreen.value + operator;
+        historyScreen.innerHTML = historyScreen.innerHTML.substring(0, historyScreen.innerHTML.length - 1) + operator;
     }
 }
 
 function reset() {
     memory = null;
     operation = null;
-    historyP.innerHTML = "";
+    historyScreen.innerHTML = "";
     resultScreen.value = "0";
-    screenContainsMemory = false;
+    screenContainsUserInput = true;
 }
 
-function executePendingOperation() {
-    if (screenContainsMemory) return;
-
-    var scr = Number.parseFloat(resultScreen.value);
-    if (operation) {
-        memory = operation(memory, scr);
-    } else {
-        memory = scr;
+function division(a,b) {
+    if (b == 0) {
+        reset();
+        resultScreen.value = "Cannot divide by zero";
+        screenContainsUserInput = false;
+        throw "Division by zero";
     }
-    screenContainsMemory = true;
-    resultScreen.value = memory;
+    return a/b;
 }
