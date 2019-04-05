@@ -20,6 +20,7 @@
 
 .btn:hover {
     background: #d9edf7;
+    transition:all 0.3s;
 }
 
 .col-xs-3 {
